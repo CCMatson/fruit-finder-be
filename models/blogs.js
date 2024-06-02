@@ -29,6 +29,7 @@ const blogSchema = new Schema(
       enum: ["Give away", "Request", "Gratitude", "Recipe"],
     },
     author: { type: Schema.Types.ObjectId, ref: "Profile" },
+    comments: [commentSchema],
   },
   {
     comments: [commentSchema],

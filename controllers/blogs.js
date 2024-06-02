@@ -29,8 +29,22 @@ const index = async (req, res) => {
   }
 }
 
+const show = async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id)
+      .populate('author')
+      .populate('comments.author')
+    res.status(200).json(blog)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({message: error.message})
+  }
+}
+
+
 export {
   create,
   index,
+  show,
 }
 
